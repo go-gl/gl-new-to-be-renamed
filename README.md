@@ -1,4 +1,4 @@
-# gl [![Build Status](https://github.com/go-gl/gl/actions/workflows/main.yml/badge.svg)](https://github.com/go-gl/gl/actions/workflows/main.yml) [![Go Reference](https://pkg.go.dev/badge/github.com/go-gl/gl.svg)](https://pkg.go.dev/github.com/go-gl/gl)
+# gl.4413a [![Build Status](https://github.com/go-gl/gl/actions/workflows/main.yml/badge.svg)](https://github.com/go-gl/gl/actions/workflows/main.yml) [![Go Reference](https://pkg.go.dev/badge/github.com/go-gl/gl.svg)](https://pkg.go.dev/github.com/go-gl/gl)
 
 This repository holds Go bindings to various OpenGL versions. They are auto-generated using [Glow](https://github.com/go-gl/glow).
 
