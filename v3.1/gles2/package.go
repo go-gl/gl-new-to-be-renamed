@@ -37,7 +37,7 @@ package gles2
 // #ifndef GLAPI
 // #define GLAPI extern
 // #endif
-// #include <KHR/khrplatform.h>
+// #include <khrplatform.h>
 // typedef unsigned int GLenum;
 // typedef unsigned char GLboolean;
 // typedef unsigned int GLbitfield;
