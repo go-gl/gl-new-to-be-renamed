@@ -19,9 +19,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install libgl1-mesa-dev
 
     - name: Check out module
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v5
