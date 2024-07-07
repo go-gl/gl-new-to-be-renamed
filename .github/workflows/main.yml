@@ -7,23 +7,35 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.17, 1.12]
+        go-version: ['stable']
         os: [macos-latest, windows-latest, ubuntu-latest]
+        include:
+          - os: ubuntu-latest
+            go-version: ''
 
     steps:
     - name: Install dependencies (linux)
       if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: sudo apt-get update && sudo apt-get install libgl1-mesa-dev
-
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{matrix.go-version}}
+      run: sudo apt-get update && sudo apt-get install libgl-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev xvfb
 
     - name: Check out module
       uses: actions/checkout@v2
       with:
         fetch-depth: 1
 
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: ${{matrix.go-version}}
+        go-version-file: go.mod
+
+      # Test that the package at least builds on all platforms
+    - name: Test build
+      run: go build -v ./...
+
     - name: Run tests
-      run: go test -v -race ./...
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+        # Update dependencies here to avoid pulling glfw into go.mod
+        go mod tidy
+        xvfb-run go test -v
